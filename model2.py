@@ -1,4 +1,5 @@
 import os
+import random
 import pickle
 import numpy as np
 from openai import OpenAI
@@ -110,8 +111,8 @@ def get_product_categories(df, sample_size, cost_per_million_tokens):
         start_index+=sample_size
         sample_no+=1
         
-        with open(Path("data/product_type_dict.pkl"), "wb") as f:
-            pickle.dump(product_type_dict, f)
+    with open(Path("data/product_type_dict.pkl"), "wb") as f:
+        pickle.dump(product_type_dict, f)
 
 
 
@@ -159,7 +160,7 @@ def make_embeddings(df_resampled, sample_size, cost_per_million_tokens):
 
 
 # CREATE PRE-MADE CATEGORIES
-#get_product_categories(df, sample_size=1000, cost_per_million_tokens= 0.15):
+get_product_categories(df_resampled, sample_size=1000, cost_per_million_tokens= 0.15)
 
 
 # OPEN PRE-MADE CATEGORIES

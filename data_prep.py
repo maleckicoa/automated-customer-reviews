@@ -36,6 +36,8 @@ def make_dataframe():
     df_resampled = df.sample(frac=1, random_state=42).reset_index(drop=True) #  randomize the rows of the dataframe
     df_resampled['new_id'] = np.arange(1, len(df_resampled) + 1)
 
+    df_resampled[['reviews.numHelpful', 'reviews.didPurchase']] = (df_resampled[['reviews.numHelpful', 'reviews.didPurchase']].fillna(0)).astype(int)
+
     return df_resampled
 
 if __name__ == "__main__":
